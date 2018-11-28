@@ -98,11 +98,11 @@ def pickOne():
         if flappy.fitness > parent.fitness:
             parent = flappy
     bestBirdOfEachGen.append(parent)
-    if highscore > 990000 and saveOrNot == 0:
+    if highscore > 99000000 and saveOrNot == 0:
         filename =  "best_of_all.npy"
         parent.brain.saveNetwork(filename)
         print("saved best of all")
-        run = False
+ 
 
     saveOrNot+= 1
     child = Bird(parent.brain)
