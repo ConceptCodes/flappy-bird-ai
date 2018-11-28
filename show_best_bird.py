@@ -91,7 +91,7 @@ myfont = game.font.SysFont("Comic Sans MS", 40)
 pipes  = []
 pipes.append(Pipe(width*0.6))
 nn = neuralNetwork(1,2,3,0.4)
-best_birds_brain = nn.loadNetwork("genData/best_of_all.npy")
+best_birds_brain = nn.loadNetwork("genData/best_of_gen_80.npy")
 bestBird = Bird(best_birds_brain)
 
 failed = False

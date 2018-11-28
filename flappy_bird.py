@@ -5,7 +5,7 @@ import pygame as game
 
 height = 600
 width = 1000
-fps = 60
+fps = 40
 
 class Bird:
     def __init__(self,brain):
@@ -86,7 +86,7 @@ class Pipe:
 saveOrNot = 0
 
 def nextGeneration():
-    global  savedFlappies, currentFlappies, pipes,saveOrNot
+    global  savedFlappies, currentFlappies, pipes,saveOrNot, fps
     for i in range(50):
         currentFlappies.append(Bird(None))
     saveOrNot = 0
@@ -97,7 +97,8 @@ def nextGeneration():
         currentFlappies.append(pickOne())
 
     savedFlappies = []
-    pipes.append(Pipe(width*0.6))
+#    pipes.append(Pipe(width*0.6))
+    fps = 40
 
 def pickOne():
     global saveOrNot, savedFlappies,run
@@ -115,7 +116,7 @@ def pickOne():
 
     saveOrNot+= 1
     child = Bird(parent.brain)
-    child.brain.mutate(0.3)
+    child.brain.mutate(0.1)
     return child
 
 def calculateFitness(savedFlappies):
@@ -131,9 +132,9 @@ clock = game.time.Clock()
 game.display.set_caption("FLAPPY BIRD")
 myfont = game.font.SysFont("Comic Sans MS", 30)
 pipes  = []
-pipes.append(Pipe(width*0.6))
+#pipes.append(Pipe(width*0.6))
 closestPipe = 5
-populationSize = 1000
+populationSize = 800
 savedFlappies = []
 currentFlappies = []
 highscore = 0
@@ -149,7 +150,7 @@ while run:
 
     textsurface = myfont.render("highest Score: "+str(highscore) +"       Gen: "+str(currentGen), False, (0,200,200))
 
-    if (i % 70 == 0):
+    if (i % 50 == 0):
         pipes.append(Pipe(width))
         i = 0
 
@@ -191,5 +192,6 @@ while run:
 
     game.display.update()
     i += 1 # frame counter for showing pipes
+    fps *= 1.0000001
 
 game.quit()
