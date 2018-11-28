@@ -79,7 +79,6 @@ saveOrNot = 0
 
 def nextGeneration():
     global  savedFlappies, currentFlappies, pipes,saveOrNot, highscore
-    highscore = 0
     for i in range(50):
         currentFlappies.append(Bird(None))
     saveOrNot = 0
@@ -90,7 +89,7 @@ def nextGeneration():
         currentFlappies.append(pickOne())
 
     savedFlappies = []
-
+    highscore = 0
 def pickOne():
     global saveOrNot, savedFlappies,run
     parent = savedFlappies[0]
