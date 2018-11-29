@@ -1,4 +1,4 @@
-import random, copy
+oimport random, copy
 import numpy as np
 from neuralNetwork_API import *
 
@@ -102,7 +102,7 @@ def pickOne():
         filename =  "best_of_all.npy"
         parent.brain.saveNetwork(filename)
         print("saved best of all")
- 
+
 
     saveOrNot+= 1
     child = Bird(parent.brain)
@@ -166,6 +166,11 @@ while run:
             currentGen += 1
             print("New Generation!")
 
+        if highscore > 123456789:
+            closestPipe = 5
+            nextGeneration()
+            currentGen += 1
+            print("New Generation!")
 
         if (highscore % 45) == 0:
             print("highscore:",highscore,"Current Gen:",currentGen)
