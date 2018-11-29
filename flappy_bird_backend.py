@@ -1,4 +1,4 @@
-oimport random, copy
+import random, copy
 import numpy as np
 from neuralNetwork_API import *
 
