@@ -92,19 +92,23 @@ def nextGeneration():
     highscore = 0
 def pickOne():
     global saveOrNot, savedFlappies,run
-    parent = savedFlappies[0]
+    if len(savedFlappies > 0):
+        parent = savedFlappies[0]
+    else:
+        parent = Bird(None)
 
     for flappy in savedFlappies:
         if flappy.fitness > parent.fitness:
             parent = flappy
-    bestBirdOfEachGen.append(parent)
-    if highscore > 250000000 and saveOrNot == 0:
+    if saveOrNot == 0:
+        bestBirdOfEachGen.append(parent)
+    if highscore > 25000000 and saveOrNot == 0:
         filename =  "best_of_all.npy"
         parent.brain.saveNetwork(filename)
         print("saved best of all")
         filename2 = "best_of_gen"
         for x in range(len(bestBirdOfEachGen)):
-            bestBirdOfEachGen[x].brain.saveNetwork(filename2+str(x)+"npy")
+            bestBirdOfEachGen[x].brain.saveNetwork(filename2+str(x)+".npy")
             print(x, "Gen saved!")
 
 
