@@ -20,7 +20,7 @@ class Bird:
         if (brain != None):
             self.brain = copy.copy(brain)
         else:
-            self.brain = neuralNetwork(5,10,2,0.15)
+            self.brain = neuralNetwork(5,13,2,0.15)
 
     def up(self):
         self.velocity += self.lift
@@ -98,10 +98,14 @@ def pickOne():
         if flappy.fitness > parent.fitness:
             parent = flappy
     bestBirdOfEachGen.append(parent)
-    if highscore > 99000000 and saveOrNot == 0:
+    if highscore > 250000000 and saveOrNot == 0:
         filename =  "best_of_all.npy"
         parent.brain.saveNetwork(filename)
         print("saved best of all")
+        filename2 = "best_of_gen"
+        for x in range(len(bestBirdOfEachGen)):
+            bestBirdOfEachGen[x].brain.saveNetwork(filename2+str(x)+"npy")
+            print(x, "Gen saved!")
 
 
     saveOrNot+= 1
@@ -118,7 +122,6 @@ def calculateFitness(savedFlappies):
 
 
 pipes  = []
-#pipes.append(Pipe(width*0.6))
 closestPipe = 5
 populationSize = 1000
 savedFlappies = []
@@ -134,7 +137,7 @@ run = True
 while run:
     for x in range(fps):
 
-        if (i % 50 == 0):
+        if (i % 55 == 0):
             pipes.append(Pipe(width))
             i = 0
 
