@@ -135,7 +135,7 @@ for i in range(populationSize):
 i = 0
 run = True
 while run:
-    for x in range(fps):
+    for x in range(fps//1):
 
         if (i % 55 == 0):
             pipes.append(Pipe(width))
@@ -169,7 +169,7 @@ while run:
             currentGen += 1
             print("New Generation!")
 
-        if highscore > 123456789:
+        if highscore > 250156789:
             closestPipe = 5
             nextGeneration()
             currentGen += 1
@@ -178,3 +178,4 @@ while run:
         if (highscore % 45) == 0:
             print("highscore:",highscore,"Current Gen:",currentGen)
         i += 1 # frame counter for showing pipes
+    fps *= 1.00001
