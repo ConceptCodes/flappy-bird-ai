@@ -135,7 +135,7 @@ for i in range(populationSize):
 i = 0
 run = True
 while run:
-    for x in range(fps//1):
+    for x in range(int(fps//1)):
 
         if (i % 55 == 0):
             pipes.append(Pipe(width))
