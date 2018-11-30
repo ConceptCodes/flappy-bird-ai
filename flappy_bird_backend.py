@@ -92,7 +92,7 @@ def nextGeneration():
     highscore = 0
 def pickOne():
     global saveOrNot, savedFlappies,run
-    if len(savedFlappies > 0):
+    if len(savedFlappies)>0:
         parent = savedFlappies[0]
     else:
         parent = Bird(None)
